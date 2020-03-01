@@ -12,6 +12,12 @@
           Generate
         </router-link>
       </div>
+
+      <div>
+        <router-link to="/view">
+          View
+        </router-link>
+      </div>
     </div>
     <router-view />
   </div>

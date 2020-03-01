@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Generate from '../views/Generate.vue';
 import Home from '../views/Home.vue';
+import View from '../views/View.vue';
 
 Vue.use(VueRouter);
 
@@ -11,6 +12,12 @@ const routes = [
     path: '/generate',
     component: Generate,
     name: 'Generate',
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/view',
+    component: View,
+    name: 'View',
     meta: { requiresAuth: true },
   },
   // {
