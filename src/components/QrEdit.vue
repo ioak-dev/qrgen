@@ -487,6 +487,12 @@ export default {
         case 'wifi':
           qrText = this.formatWifiContent(this.data.wifi);
           break;
+        case 'contactV':
+          qrText = this.formatContactVContent(this.data.contactV);
+          break;
+        case 'contactMe':
+          qrText = this.formatContactMeContent(this.data.contactMe);
+          break;
         case 'plaintext':
           qrText = this.data.plaintext.text;
           break;
@@ -508,6 +514,12 @@ export default {
     },
     formatWifiContent(data) {
       return `WIFI:T:WPA;S:${data.ssid};P:${data.pwd};;`;
+    },
+    formatContactVContent(data) {
+      return `Construct the text in v card format`;
+    },
+    formatContactMeContent(data) {
+      return `Construct the text in ME card format`;
     },
     handleChange(baseObject) {
       if (baseObject) {
