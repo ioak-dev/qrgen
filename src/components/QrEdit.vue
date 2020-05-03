@@ -122,12 +122,6 @@
           @change="handleChange('contactV')"
         />
         <oak-text
-          id="begin"
-          label="Begin"
-          :data="data.contactV.begin"
-          @change="handleChange('contactV')"
-        />
-        <oak-text
           id="caladruri"
           label="Caladruri"
           :data="data.contactV.caladruri"
@@ -408,13 +402,11 @@ export default {
           adr: '',
           anniversary: '',
           bday: '',
-          begin: '',
           caladruri: '',
           caluri: '',
           categories: '',
           clientpidmap: '',
           email: '',
-          end: '',
           fburl: '',
           fn: '',
           gender: '',
@@ -436,13 +428,12 @@ export default {
           rev: '',
           role: '',
           sound: '',
-          soource: '',
+          source: '',
           tel: '',
           title: '',
           tz: '',
           uid: '',
           url: '',
-          version: '',
           xml: '',
         },
       },
@@ -487,6 +478,12 @@ export default {
         case 'wifi':
           qrText = this.formatWifiContent(this.data.wifi);
           break;
+        case 'contactMe':
+          qrText = this.formatMeCardContent(this.data.contactMe);
+          break;
+        case 'contactV':
+          qrText = this.formatVCardContent(this.data.contactV);
+          break;
         case 'plaintext':
           qrText = this.data.plaintext.text;
           break;
@@ -508,6 +505,12 @@ export default {
     },
     formatWifiContent(data) {
       return `WIFI:T:WPA;S:${data.ssid};P:${data.pwd};;`;
+    },
+    formatMeCardContent(data) {
+      return `MECARD:N:${data.n};EMAIL:${data.email};adr:${data.adr};bday:${data.bday};nickname:${data.nickname};note:${data.note};sound:${data.sound};tel:${data.tel};telav:${data.telav};url:${data.url};`;
+    },
+    formatVCardContent(data) {
+      return `BEGIN:VCARD\nadr:${data.adr}\nanniversary:${data.anniversary}\nbday:${data.bday}\nbegin:${data.begin}\ncaladruri:${data.caladruri}\ncaluri:${data.caluri}\ncategories:${data.categories}\nclientpidmap:${data.clientpidmap}\nEMAIL:${data.email}\nfburl:${data.fburl}\nfn:${data.fn}\ngender:${data.gender}\ngeo:${data.geo}\nimpp:${data.impp}\nkey:${data.key}\nkind:${data.kind}\noptional:${data.optional}\nlang:${data.lang}\nlogo:${data.logo}\nmember:${data.member}\nN:${data.n}\nnickname:${data.nickname}\nnote:${data.note}\norg:${data.org}\nprodid:${data.prodid}\nrelated:${data.related}\nrev:${data.rev}\nrole:${data.role}\nsound:${data.sound}\nsource:${data.source}\ntel:${data.tel}\ntitle:${data.title}\nuid:${data.uid}\nurl:${data.url}\nVERSION:4.0\nxml:${data.xml}\nEND:VCARD`;
     },
     handleChange(baseObject) {
       if (baseObject) {
