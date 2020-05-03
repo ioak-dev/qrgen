@@ -479,10 +479,10 @@ export default {
           qrText = this.formatWifiContent(this.data.wifi);
           break;
         case 'contactMe':
-          qrText = this.formatMeCardContent(this.data.contactMe);
+          qrText = this.formatContactMeContent(this.data.contactMe);
           break;
         case 'contactV':
-          qrText = this.formatVCardContent(this.data.contactV);
+          qrText = this.formatContactVContent(this.data.contactV);
           break;
         case 'plaintext':
           qrText = this.data.plaintext.text;
@@ -507,10 +507,10 @@ export default {
       return `WIFI:T:WPA;S:${data.ssid};P:${data.pwd};;`;
     },
     formatContactVContent(data) {
-      return `Construct the text in v card format`;
+      return `BEGIN:VCARD\nadr:${data.adr}\nanniversary:${data.anniversary}\nbday:${data.bday}\nbegin:${data.begin}\ncaladruri:${data.caladruri}\ncaluri:${data.caluri}\ncategories:${data.categories}\nclientpidmap:${data.clientpidmap}\nEMAIL:${data.email}\nfburl:${data.fburl}\nfn:${data.fn}\ngender:${data.gender}\ngeo:${data.geo}\nimpp:${data.impp}\nkey:${data.key}\nkind:${data.kind}\noptional:${data.optional}\nlang:${data.lang}\nlogo:${data.logo}\nmember:${data.member}\nN:${data.n}\nnickname:${data.nickname}\nnote:${data.note}\norg:${data.org}\nprodid:${data.prodid}\nrelated:${data.related}\nrev:${data.rev}\nrole:${data.role}\nsound:${data.sound}\nsource:${data.source}\ntel:${data.tel}\ntitle:${data.title}\nuid:${data.uid}\nurl:${data.url}\nVERSION:4.0\nxml:${data.xml}\nEND:VCARD`;
     },
     formatContactMeContent(data) {
-      return `Construct the text in ME card format`;
+      return `MECARD:N:${data.n};EMAIL:${data.email};adr:${data.adr};bday:${data.bday};nickname:${data.nickname};note:${data.note};sound:${data.sound};tel:${data.tel};telav:${data.telav};url:${data.url};`;
     },
     handleChange(baseObject) {
       if (baseObject) {
