@@ -1,48 +1,22 @@
-.oak-text-field {
-  // width: 100%;
-
-  input,
-  textarea {
-    font-family: 'Open Sans', sans-serif;
+.oak-select {
+  .select {
     width: 100%;
+    // background-color: var(--color-formelement-bg-1);
+    background-color: transparent;
     color: var(--color-formelement-fg);
-    font-size: 1em;
     outline: none;
     border: none;
-    background-color: transparent;
     border-bottom: 1px solid var(--color-foreground-1);
     &:focus {
       border-bottom: 1px solid var(--color-primary-1);
     }
-    box-sizing: border-box;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-      -webkit-box-shadow 0.15s ease-in-out;
-    height: auto;
     padding: 10px 0;
-
-    &.error {
-      // border-color: var(--color-failure);
-      background-color: var(--color-failure-dim);
-
-      &:focus {
-        color: var(--color-foreground-1);
-      }
-    }
-
-    &.disabled {
-      background-color: var(--color-formelement-bg-2);
-      color: var(--color-foreground-4);
+    font-size: 1em;
+    option {
+      font-size: 1.2em;
+      background-color: var(--color-formelement-bg-1);
     }
   }
-
-  textarea {
-    height: 100px;
-    overflow-y: auto;
-    resize: vertical;
-    // max-height: 200px;
-  }
-  // margin-top: 1.5rem;
-  // margin-bottom: 1.5rem;
   margin-top: 16px;
   margin-bottom: 16px;
   text-align: left;
@@ -54,7 +28,6 @@
     text-overflow: ellipsis;
     position: absolute;
     font-size: 1rem;
-    cursor: text;
     top: 0;
     left: 0;
     color: #757575;
@@ -74,8 +47,7 @@
     }
   }
 
-  input:focus + label.active,
-  textarea:focus + label.active {
+  select:focus + label.active {
     color: var(--color-primary-1);
   }
 }

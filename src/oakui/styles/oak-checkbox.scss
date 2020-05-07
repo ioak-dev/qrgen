@@ -1,0 +1,52 @@
+.oak-check-box {
+  --ocb-variant-radius: 4px;
+  --ocb-theme-bg: var(--color-default);
+
+  &.circle {
+    --ocb-variant-radius: 50%;
+  }
+
+  &.square {
+    --ocb-variant-radius: 4px;
+  }
+
+  &.primary {
+    --ocb-theme-bg: var(--color-primary-1);
+  }
+
+  &.secondary {
+    --ocb-theme-bg: var(--color-secondary-1);
+  }
+
+  &.tertiary {
+    --ocb-theme-bg: var(--color-tertiary-1);
+  }
+
+  &.default {
+    --ocb-theme-bg: var(--color-default);
+  }
+
+  display: flex;
+  align-items: center;
+
+  .checked,
+  .unchecked {
+    user-select: none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--ocb-theme-bg);
+    border-radius: var(--ocb-variant-radius);
+    line-height: 20px;
+    .material-icons {
+      line-height: 20px;
+      font-size: 1em;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .label {
+    padding-left: 10px;
+  }
+}

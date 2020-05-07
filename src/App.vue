@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="theme_dark themecolor_2">
+  <div id="app" class="theme_dark themecolor_1">
     <div class="navigation">
       <div>
         <router-link to="/home">
@@ -31,6 +31,7 @@ export default {
 
 <style lang="scss">
 @import './theme.scss';
+@import './metric.scss';
 body {
   margin: 0;
 }
@@ -38,8 +39,8 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-body);
-  color: var(--color-body-invert);
+  background-color: var(--color-background-1);
+  color: var(--color-foreground-1);
 }
 .navigation {
   background-color: var(--color-nav);
@@ -58,12 +59,12 @@ body {
   margin: 10px;
   border-radius: 5px;
 }
-.navigation a.router-link-active {
-  background: var(--color-primary);
-  color: var(--color-body);
-}
 .navigation a:hover {
-  background: var(--color-body);
-  color: var(--color-body-invert);
+  background: var(--color-background-4);
+  color: var(--color-foreground-1);
+}
+.navigation a.router-link-active {
+  background: var(--color-primary-1);
+  color: var(--color-foreground-1);
 }
 </style>

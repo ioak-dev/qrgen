@@ -1,0 +1,46 @@
+.oak-switch {
+  user-select: none;
+  --ocb-theme-bg: var(--color-default);
+  --ocb-variant-radius: 50%;
+
+  &.primary {
+    --ocb-theme-bg: var(--color-primary-1);
+  }
+
+  &.secondary {
+    --ocb-theme-bg: var(--color-secondary-1);
+  }
+
+  &.tertiary {
+    --ocb-theme-bg: var(--color-tertiary-1);
+  }
+
+  &.default {
+    --ocb-theme-bg: var(--color-default);
+  }
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .radio-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px 10px;
+    height: var(--metric-formelement-height);
+    padding: 0 10px;
+    border-radius: 4px;
+    @media (max-width: 767px) {
+      height: 30px;
+    }
+
+    &:hover {
+      background-color: var(--color-background-4);
+    }
+
+    &.selected {
+      background-color: var(--ocb-theme-bg);
+    }
+  }
+}

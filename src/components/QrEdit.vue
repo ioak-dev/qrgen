@@ -1,6 +1,12 @@
 <template>
-  <oak-dialog class="qr-edit" :visible="visible" @click="$emit('toggle')">
-    <div slot="dialog-body">
+  <OakModal
+    class="qr-edit"
+    :visible="visible"
+    @close="$emit('toggle')"
+    label="Generate QR code"
+    fullscreen
+  >
+    <div slot="modal-body" class="form">
       <oak-select
         id="contentType"
         theme="primary"
@@ -10,7 +16,7 @@
         :objects="supported.contentTypes"
         @change="handleChange()"
       />
-      <div v-if="data.contentType === 'url'">
+      <template v-if="data.contentType === 'url'">
         <oak-text
           id="text"
           label="URL"
@@ -18,8 +24,8 @@
           placeholder="http://"
           @change="handleChange('url')"
         />
-      </div>
-      <div v-if="data.contentType === 'wifi'">
+      </template>
+      <template v-if="data.contentType === 'wifi'">
         <oak-text
           id="ssid"
           label="WiFi SSID"
@@ -33,8 +39,8 @@
           :data="data.wifi.pwd"
           @change="handleChange('wifi')"
         />
-      </div>
-      <div v-if="data.contentType === 'contactMe'">
+      </template>
+      <template v-if="data.contentType === 'contactMe'">
         <oak-text
           id="adr"
           label="Address"
@@ -95,8 +101,8 @@
           :data="data.contactMe.url"
           @change="handleChange('contactMe')"
         />
-      </div>
-      <div v-if="data.contentType === 'contactV'">
+      </template>
+      <template v-if="data.contentType === 'contactV'">
         <oak-text
           id="addr"
           label="Address"
@@ -310,8 +316,8 @@
           :data="data.contactV.xml"
           @change="handleChange('contactV')"
         />
-      </div>
-      <div v-if="data.contentType === 'plaintext'">
+      </template>
+      <template v-if="data.contentType === 'plaintext'">
         <oak-text
           id="text"
           label="Free text"
@@ -319,7 +325,7 @@
           multiline
           @change="handleChange('plaintext')"
         />
-      </div>
+      </template>
       <oak-select
         id="outputFormat"
         label="output type"
@@ -339,7 +345,7 @@
       />
       <img v-if="qr" :src="qr" />
     </div>
-    <div slot="dialog-footer">
+    <div slot="modal-footer">
       <oak-button
         label="download"
         theme="primary"
@@ -347,7 +353,7 @@
         @click="download"
       />
     </div>
-  </oak-dialog>
+  </OakModal>
 </template>
 
 <script>
@@ -355,7 +361,7 @@ import QRCode from 'qrcode';
 import OakButton from '../oakui/OakButton.vue';
 import OakText from '../oakui/OakText.vue';
 import OakSelect from '../oakui/OakSelect.vue';
-import OakDialog from '../oakui/OakDialog.vue';
+import OakModal from '../oakui/OakModal.vue';
 
 export default {
   name: 'QrEdit',
@@ -363,7 +369,7 @@ export default {
     OakButton,
     OakText,
     OakSelect,
-    OakDialog,
+    OakModal,
   },
   props: {
     visible: Boolean,
@@ -542,6 +548,10 @@ export default {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto;
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
   input,
   select {
     padding: 10px;
